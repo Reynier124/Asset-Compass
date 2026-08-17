@@ -1,0 +1,66 @@
+name: "\U0001F41B Fix"
+description: Something is broken or behaving incorrectly
+title: "[FIX] "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: milestone
+    attributes:
+      label: Milestone
+      description: Which Phase 1 milestone does this bug affect?
+      options:
+        - "1 - Project Scaffolding & CI Base"
+        - "2 - Binance Connector (Read-Only)"
+        - "3 - IOL Connector (Read-Only)"
+        - "4 - Bull Market Connector (Read-Only)"
+        - "5 - Unified Data Model & Persistence"
+        - "6 - BI Dashboard"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Low (cosmetic, no functional impact)
+        - Medium (functional but has a workaround)
+        - High (blocks a feature or produces wrong data)
+        - Critical (crashes, security issue, or data loss risk)
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: Current Behavior
+      description: What's happening right now?
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should happen instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      placeholder: |
+        1. Call GET /api/positions
+        2. ...
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / Screenshots / Stack Trace
+      description: Paste relevant logs (from Kibana if applicable) or screenshots.
+      render: shell
+    validations:
+      required: false

@@ -1,0 +1,62 @@
+name: "\U0001F4A1 Feature"
+description: New functionality or task that moves a milestone forward
+title: "[FEATURE] "
+labels: ["enhancement"]
+body:
+  - type: dropdown
+    id: milestone
+    attributes:
+      label: Milestone
+      description: Which Phase 1 milestone does this belong to?
+      options:
+        - "1 - Project Scaffolding & CI Base"
+        - "2 - Binance Connector (Read-Only)"
+        - "3 - IOL Connector (Read-Only)"
+        - "4 - Bull Market Connector (Read-Only)"
+        - "5 - Unified Data Model & Persistence"
+        - "6 - BI Dashboard"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which part of the system does this touch?
+      options:
+        - Backend
+        - Frontend
+        - Infra / DevOps
+        - Database
+        - Documentation
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What needs to be built, and why?
+      placeholder: e.g. Implement getBalance() for the Binance connector using the /api/v3/account endpoint.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: How do we know this is done? Use checkboxes.
+      placeholder: |
+        - [ ] Endpoint/method returns expected data shape
+        - [ ] Unit tests cover happy path and error cases
+        - [ ] No real API calls made during CI (mocked)
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes / Dependencies
+      description: Related issues, blockers, design decisions, links to ADRs, etc.
+    validations:
+      required: false
