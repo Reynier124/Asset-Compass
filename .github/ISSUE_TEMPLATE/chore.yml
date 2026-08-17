@@ -1,0 +1,54 @@
+name: "\U0001F527 Chore"
+description: Maintenance work — no new user-facing functionality (CI, deps, docs, refactors)
+title: "[CHORE] "
+labels: ["chore"]
+body:
+  - type: dropdown
+    id: milestone
+    attributes:
+      label: Milestone
+      description: Which Phase 1 milestone does this belong to?
+      options:
+        - "1 - Project Scaffolding & CI Base"
+        - "2 - Binance Connector (Read-Only)"
+        - "3 - IOL Connector (Read-Only)"
+        - "4 - Bull Market Connector (Read-Only)"
+        - "5 - Unified Data Model & Persistence"
+        - "6 - BI Dashboard"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Type of chore
+      options:
+        - Dependency update
+        - CI/CD pipeline
+        - Docker / local environment
+        - Documentation / ADR
+        - Refactor (no behavior change)
+        - Project structure / tooling
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What needs to be done, and why does it matter?
+      placeholder: e.g. Add Flyway to the project and configure the initial baseline migration.
+    validations:
+      required: true
+
+  - type: textarea
+    id: checklist
+    attributes:
+      label: Checklist
+      placeholder: |
+        - [ ] Change implemented
+        - [ ] CI pipeline still passes
+        - [ ] Documentation updated if applicable
+    validations:
+      required: false
