@@ -1,0 +1,38 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 1,
+    "applicationType": "microservice",
+    "authenticationType": "oauth2",
+    "baseName": "portfolioService",
+    "buildTool": "maven",
+    "cacheProvider": "redis",
+    "clientFramework": "no",
+    "creationTimestamp": 1701517477007,
+    "devDatabaseType": "postgresql",
+    "entities": [
+      "Broker",
+      "BrokerAccount",
+      "Asset",
+      "AssetRatio",
+      "Operation",
+      "Rebate",
+      "TaxEvent",
+      "IncomeEvent",
+      "Position",
+      "Valuation"
+    ],
+    "jhipsterVersion": "9.2.0",
+    "jwtSecretKey": "NzRhYTUzNjYxMWExNWFiMmJkZGJmZGYxOGRhYzQ3MWI1ZDUwY2E5MWQ5Y2ExNzg2NjM3OGIxMDY5OTE0MDkyMzEyN2UzYmI3Njc4MzY4YjYzZDRiNGY3ODU5MGNjODZkNzZiNmMxYzExMWYyZjRmNWFlNjdjYzlmMWU5NTkxY2U=",
+    "languages": ["en"],
+    "lastLiquibaseTimestamp": 1701518077000,
+    "messageBroker": "kafka",
+    "monorepository": true,
+    "nativeLanguage": "en",
+    "packageName": "com.assetcompass.portfolio",
+    "prodDatabaseType": "postgresql",
+    "serverPort": "8081",
+    "serviceDiscoveryType": "no",
+    "skipClient": true,
+    "skipCommitHook": true
+  }
+}

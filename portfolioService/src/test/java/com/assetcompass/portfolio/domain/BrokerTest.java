@@ -1,0 +1,24 @@
+package com.assetcompass.portfolio.domain;
+
+import static com.assetcompass.portfolio.domain.BrokerTestSamples.*;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import com.assetcompass.portfolio.web.rest.TestUtil;
+import org.junit.jupiter.api.Test;
+
+class BrokerTest {
+
+    @Test
+    void equalsVerifier() throws Exception {
+        TestUtil.equalsVerifier(Broker.class);
+        Broker broker1 = getBrokerSample1();
+        Broker broker2 = new Broker();
+        assertThat(broker1).isNotEqualTo(broker2);
+
+        broker2.setId(broker1.getId());
+        assertThat(broker1).isEqualTo(broker2);
+
+        broker2 = getBrokerSample2();
+        assertThat(broker1).isNotEqualTo(broker2);
+    }
+}

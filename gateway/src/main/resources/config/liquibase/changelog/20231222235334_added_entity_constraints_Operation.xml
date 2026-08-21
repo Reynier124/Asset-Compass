@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity Operation.
+    -->
+    <changeSet id="20231222235334-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="account_id"
+                                 baseTableName="operation"
+                                 constraintName="fk_operation__account_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="broker_account"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="asset_id"
+                                 baseTableName="operation"
+                                 constraintName="fk_operation__asset_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="asset"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="closes_operation_id"
+                                 baseTableName="operation"
+                                 constraintName="fk_operation__closes_operation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="operation"
+                                 />
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,29 @@
+{
+  "gatewayApp": {
+    "incomeEvent": {
+      "home": {
+        "title": "Income Events",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Income Event",
+        "createOrEditLabel": "Create or edit a Income Event",
+        "notFound": "No Income Events found"
+      },
+      "created": "A new Income Event is created with identifier {{ param }}",
+      "updated": "A Income Event is updated with identifier {{ param }}",
+      "deleted": "A Income Event is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Income Event {{ id }}?"
+      },
+      "detail": {
+        "title": "Income Event"
+      },
+      "id": "Id",
+      "type": "Type",
+      "eventDate": "Event Date",
+      "amount": "Amount",
+      "currency": "Currency",
+      "account": "Account",
+      "asset": "Asset"
+    }
+  }
+}

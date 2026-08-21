@@ -1,0 +1,10 @@
+{
+  "generator-jhipster": {
+    "appsFolders": ["gateway", "portfolioService", "notificationService", "tradingService"],
+    "baseName": "workspaces",
+    "defaultCommand": "workspaces",
+    "deploymentType": "none",
+    "directoryPath": "./",
+    "jhipsterVersion": "8.11.0"
+  }
+}

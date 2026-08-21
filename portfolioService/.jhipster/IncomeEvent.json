@@ -1,0 +1,59 @@
+{
+  "annotations": {
+    "changelogDate": "20231202115237"
+  },
+  "applications": ["gateway", "portfolioService"],
+  "clientRootFolder": "portfolioService",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "IncomeType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "DIVIDENDO,RENTA,AMORTIZACION"
+    },
+    {
+      "fieldName": "eventDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "currency",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "microserviceName": "portfolioService",
+  "name": "IncomeEvent",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "brokerAccount",
+      "relationshipName": "account",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "asset",
+      "relationshipName": "asset",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

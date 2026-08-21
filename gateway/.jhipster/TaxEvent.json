@@ -1,0 +1,62 @@
+{
+  "annotations": {
+    "changelogDate": "20231222235534"
+  },
+  "applications": ["gateway", "portfolioService"],
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "TaxType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "RETENCION_DIVIDENDO,IVA,INGRESOS_BRUTOS,BIENES_PERSONALES,OTRO"
+    },
+    {
+      "fieldName": "taxDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "currency",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "TaxEvent",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "brokerAccount",
+      "relationshipName": "account",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "operation",
+      "relationshipName": "operation",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "incomeEvent",
+      "relationshipName": "incomeEvent",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

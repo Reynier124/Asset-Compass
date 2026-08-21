@@ -1,0 +1,21 @@
+apiVersion: skaffold/v1
+kind: Config
+build:
+  artifacts:
+    - image: yourdockerhubuser/gateway
+      context: ../gateway
+      jib: {}
+    - image: yourdockerhubuser/portfolioservice
+      context: ../portfolioService
+      jib: {}
+    - image: yourdockerhubuser/notificationservice
+      context: ../notificationService
+      jib: {}
+    - image: yourdockerhubuser/tradingservice
+      context: ../tradingService
+      jib: {}
+  tagPolicy:
+    envTemplate:
+      template: '{{.IMAGE_NAME}}:latest'
+deploy:
+  kustomize: {}

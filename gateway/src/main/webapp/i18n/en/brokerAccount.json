@@ -1,0 +1,26 @@
+{
+  "gatewayApp": {
+    "brokerAccount": {
+      "home": {
+        "title": "Broker Accounts",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Broker Account",
+        "createOrEditLabel": "Create or edit a Broker Account",
+        "notFound": "No Broker Accounts found"
+      },
+      "created": "A new Broker Account is created with identifier {{ param }}",
+      "updated": "A Broker Account is updated with identifier {{ param }}",
+      "deleted": "A Broker Account is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Broker Account {{ id }}?"
+      },
+      "detail": {
+        "title": "Broker Account"
+      },
+      "id": "Id",
+      "externalAccountId": "External Account Id",
+      "displayName": "Display Name",
+      "broker": "Broker"
+    }
+  }
+}

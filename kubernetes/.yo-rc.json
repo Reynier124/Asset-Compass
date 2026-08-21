@@ -1,0 +1,21 @@
+{
+  "generator-jhipster": {
+    "appsFolders": ["gateway", "portfolioService", "notificationService", "tradingService"],
+    "clusteredDbApps": [],
+    "dbRandomPassword": "f9f45d5091d5357199f3c15c0734215ef8d44dc64c42d07ba42d724f2aef",
+    "deploymentType": "kubernetes",
+    "directoryPath": "../",
+    "dockerPushCommand": "docker push",
+    "dockerRepositoryName": "yourdockerhubuser",
+    "ingressDomain": "assetcompass.local",
+    "ingressType": "nginx",
+    "istio": false,
+    "jwtSecretKey": "NzA5ODdmZTllMGQyZDgyYTk1NzQ0YTNiYTA2ZGFjODFhZjhiMGJhMTQwMzk2ZDdhMGU5YTA5YjRlYzUwZmI3MDE2YjBlYmNjOWIwN2JiNzY2ZTUzMjJmNzczMmFjZjRlNzY1Mw==",
+    "kubernetesNamespace": "assetcompass",
+    "kubernetesServiceType": "ingress",
+    "kubernetesStorageClassName": "",
+    "kubernetesUseDynamicStorage": false,
+    "monitoring": "no",
+    "serviceDiscoveryType": "no"
+  }
+}

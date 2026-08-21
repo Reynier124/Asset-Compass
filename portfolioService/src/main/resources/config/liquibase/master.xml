@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+    <property name="floatType" value="float4" dbms="postgresql"/>
+    <property name="clobType" value="clob" dbms="postgresql"/>
+    <property name="blobType" value="blob" dbms="postgresql"/>
+    <property name="uuidType" value="uuid" dbms="postgresql"/>
+    <property name="datetimeType" value="datetime" dbms="postgresql"/>
+    <property name="timeType" value="time(6)" dbms="postgresql"/>
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231202114537_added_entity_Broker.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231202114637_added_entity_BrokerAccount.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231202114737_added_entity_Asset.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231202114837_added_entity_AssetRatio.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231202114937_added_entity_Operation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231202115037_added_entity_Rebate.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231202115137_added_entity_TaxEvent.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231202115237_added_entity_IncomeEvent.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231202115337_added_entity_Position.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231202115437_added_entity_Valuation.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20231202114637_added_entity_constraints_BrokerAccount.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231202114837_added_entity_constraints_AssetRatio.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231202114937_added_entity_constraints_Operation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231202115037_added_entity_constraints_Rebate.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231202115137_added_entity_constraints_TaxEvent.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231202115237_added_entity_constraints_IncomeEvent.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231202115337_added_entity_constraints_Position.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20231202115437_added_entity_constraints_Valuation.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
+</databaseChangeLog>

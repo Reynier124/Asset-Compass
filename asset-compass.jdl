@@ -1,0 +1,231 @@
+/**
+ * Asset Compass — Fase 1 — Modelo de datos unificado + arquitectura de microservicios
+ *
+ * Decisiones de arquitectura:
+ * - Split por bounded context de negocio: portfolioService (Fase 1), notificationService (Fase 2),
+ *   tradingService (Fase 4). notificationService y tradingService no tienen entidades propias
+ *   todavía — se modelan cuando se aborden esas fases.
+ * - Comunicación: REST (síncrona, vía gateway/Feign) + Kafka (eventos asíncronos entre servicios).
+ * - Autenticación: OAuth2/OIDC delegado a Keycloak (corre aparte, no lo genera JHipster).
+ * - Base de datos: una instancia PostgreSQL por servicio (sin compartir esquema entre servicios).
+ * - Service discovery: nativo de Kubernetes (DNS interno de K8s) — sin Eureka/Consul, porque
+ *   agregar un registry propio sería redundante sobre el descubrimiento que K8s ya resuelve.
+ * - Despliegue: manifiestos de Kubernetes generados a partir del bloque `deployment`.
+ */
+
+// ============================================================
+// ENTIDADES (dominio de portfolioService)
+// ============================================================
+
+entity Broker {
+  id UUID required
+  name String required
+}
+
+entity BrokerAccount {
+  id UUID required
+  externalAccountId String required
+  displayName String
+}
+
+entity Asset {
+  id UUID required
+  ticket String required
+  category String
+  country String
+  description String
+}
+
+entity AssetRatio {
+  id UUID required
+  ratio String required
+  effectiveFrom LocalDate required
+}
+
+entity Operation {
+  id UUID required
+  type OperationType required
+  operationDate LocalDate required
+  quantity BigDecimal required
+  price BigDecimal required
+  amount BigDecimal required
+  currency String required
+  underlyingPrice BigDecimal
+  commission BigDecimal
+}
+
+entity Rebate {
+  id UUID required
+  rebateDate LocalDate required
+  amount BigDecimal required
+  currency String required
+}
+
+entity TaxEvent {
+  id UUID required
+  type TaxType required
+  taxDate LocalDate required
+  amount BigDecimal required
+  currency String required
+}
+
+entity IncomeEvent {
+  id UUID required
+  type IncomeType required
+  eventDate LocalDate required
+  amount BigDecimal required
+  currency String required
+}
+
+entity Position {
+  id UUID required
+  quantity BigDecimal required
+  averageCost BigDecimal required
+  currentValue BigDecimal required
+  currency String required
+  lastSyncedAt Instant required
+}
+
+entity Valuation {
+  id UUID required
+  snapshotDate LocalDate required
+  totalValue BigDecimal required
+  currency String required
+}
+
+enum OperationType {
+  BUY, SELL
+}
+
+enum IncomeType {
+  DIVIDENDO, RENTA, AMORTIZACION
+}
+
+enum TaxType {
+  RETENCION_DIVIDENDO, IVA, INGRESOS_BRUTOS, BIENES_PERSONALES, OTRO
+}
+
+relationship ManyToOne {
+  BrokerAccount{broker required} to Broker
+
+  Position{account required} to BrokerAccount
+  Position{asset required} to Asset
+
+  Operation{account required} to BrokerAccount
+  Operation{asset required} to Asset
+  Operation{closesOperation} to Operation
+
+  Rebate{account required} to BrokerAccount
+  Rebate{operation} to Operation
+
+  TaxEvent{account required} to BrokerAccount
+  TaxEvent{operation} to Operation
+  TaxEvent{incomeEvent} to IncomeEvent
+
+  IncomeEvent{account required} to BrokerAccount
+  IncomeEvent{asset required} to Asset
+
+  AssetRatio{asset required} to Asset
+
+  Valuation{account} to BrokerAccount
+}
+
+dto * with mapstruct
+service * with serviceImpl
+paginate Operation, IncomeEvent, TaxEvent, Rebate, Position, Valuation with pagination
+filter *
+
+// ============================================================
+// APLICACIONES
+// ============================================================
+
+application {
+  config {
+    baseName gateway
+    applicationType gateway
+    packageName com.assetcompass.gateway
+    authenticationType oauth2
+    prodDatabaseType postgresql
+    devDatabaseType postgresql
+    cacheProvider redis
+    clientFramework react
+    buildTool maven
+    serviceDiscoveryType no
+    messageBroker kafka
+    serverPort 8080
+    testFrameworks [cypress]
+  }
+  entities *
+}
+
+application {
+  config {
+    baseName portfolioService
+    applicationType microservice
+    packageName com.assetcompass.portfolio
+    authenticationType oauth2
+    prodDatabaseType postgresql
+    devDatabaseType postgresql
+    cacheProvider redis
+    clientFramework no
+    buildTool maven
+    serviceDiscoveryType no
+    messageBroker kafka
+    serverPort 8081
+  }
+  entities Broker, BrokerAccount, Asset, AssetRatio, Operation, Rebate, TaxEvent, IncomeEvent, Position, Valuation
+}
+
+application {
+  config {
+    baseName notificationService
+    applicationType microservice
+    packageName com.assetcompass.notification
+    authenticationType oauth2
+    prodDatabaseType postgresql
+    devDatabaseType postgresql
+    cacheProvider redis
+    clientFramework no
+    buildTool maven
+    serviceDiscoveryType no
+    messageBroker kafka
+    serverPort 8082
+  }
+  // sin cláusula "entities": este servicio no tiene entidades propias todavía —
+  // se definen en la Fase 2 (reglas de alertas, notificaciones)
+}
+
+application {
+  config {
+    baseName tradingService
+    applicationType microservice
+    packageName com.assetcompass.trading
+    authenticationType oauth2
+    prodDatabaseType postgresql
+    devDatabaseType postgresql
+    cacheProvider redis
+    clientFramework no
+    buildTool maven
+    serviceDiscoveryType no
+    messageBroker kafka
+    serverPort 8083
+  }
+  // sin cláusula "entities": este servicio no tiene entidades propias todavía —
+  // se definen en la Fase 4 (ejecución de órdenes)
+}
+
+// ============================================================
+// DESPLIEGUE
+// ============================================================
+
+deployment {
+  deploymentType kubernetes,
+  appsFolders [gateway, portfolioService, notificationService, tradingService],
+  dockerRepositoryName "yourdockerhubuser",
+  serviceDiscoveryType no,
+  kubernetesNamespace assetcompass,
+  kubernetesServiceType ingress,
+  ingressDomain "assetcompass.local",
+  istio false,
+  monitoring no
+}

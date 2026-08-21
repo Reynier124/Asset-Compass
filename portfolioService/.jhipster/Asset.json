@@ -1,0 +1,39 @@
+{
+  "annotations": {
+    "changelogDate": "20231202114737"
+  },
+  "applications": ["gateway", "portfolioService"],
+  "clientRootFolder": "portfolioService",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "ticket",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "category",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "country",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "microserviceName": "portfolioService",
+  "name": "Asset",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

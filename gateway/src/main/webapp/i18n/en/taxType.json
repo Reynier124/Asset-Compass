@@ -1,0 +1,12 @@
+{
+  "gatewayApp": {
+    "TaxType": {
+      "null": "",
+      "RETENCION_DIVIDENDO": "RETENCION_DIVIDENDO",
+      "IVA": "IVA",
+      "INGRESOS_BRUTOS": "INGRESOS_BRUTOS",
+      "BIENES_PERSONALES": "BIENES_PERSONALES",
+      "OTRO": "OTRO"
+    }
+  }
+}
