@@ -1,0 +1,10 @@
+{
+  "gatewayApp": {
+    "IncomeType": {
+      "null": "",
+      "DIVIDENDO": "DIVIDENDO",
+      "RENTA": "RENTA",
+      "AMORTIZACION": "AMORTIZACION"
+    }
+  }
+}

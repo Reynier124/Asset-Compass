@@ -1,0 +1,30 @@
+{
+  "gatewayApp": {
+    "taxEvent": {
+      "home": {
+        "title": "Tax Events",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Tax Event",
+        "createOrEditLabel": "Create or edit a Tax Event",
+        "notFound": "No Tax Events found"
+      },
+      "created": "A new Tax Event is created with identifier {{ param }}",
+      "updated": "A Tax Event is updated with identifier {{ param }}",
+      "deleted": "A Tax Event is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Tax Event {{ id }}?"
+      },
+      "detail": {
+        "title": "Tax Event"
+      },
+      "id": "Id",
+      "type": "Type",
+      "taxDate": "Tax Date",
+      "amount": "Amount",
+      "currency": "Currency",
+      "account": "Account",
+      "operation": "Operation",
+      "incomeEvent": "Income Event"
+    }
+  }
+}

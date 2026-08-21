@@ -1,0 +1,26 @@
+{
+  "annotations": {
+    "changelogDate": "20231222234934"
+  },
+  "applications": ["gateway", "portfolioService"],
+  "databaseType": "sql",
+  "documentation": "Asset Compass — Fase 1 — Modelo de datos unificado + arquitectura de microservicios\\n\\nDecisiones de arquitectura:\\n- Split por bounded context de negocio: portfolioService (Fase 1), notificationService (Fase 2),\\ntradingService (Fase 4). notificationService y tradingService no tienen entidades propias\\ntodavía — se modelan cuando se aborden esas fases.\\n- Comunicación: REST (síncrona, vía gateway/Feign) + Kafka (eventos asíncronos entre servicios).\\n- Autenticación: OAuth2/OIDC delegado a Keycloak (corre aparte, no lo genera JHipster).\\n- Base de datos: una instancia PostgreSQL por servicio (sin compartir esquema entre servicios).\\n- Service discovery: nativo de Kubernetes (DNS interno de K8s) — sin Eureka/Consul, porque\\nagregar un registry propio sería redundante sobre el descubrimiento que K8s ya resuelve.\\n- Despliegue: manifiestos de Kubernetes generados a partir del bloque `deployment`.",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Broker",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -1,0 +1,28 @@
+{
+  "gatewayApp": {
+    "rebate": {
+      "home": {
+        "title": "Rebates",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Rebate",
+        "createOrEditLabel": "Create or edit a Rebate",
+        "notFound": "No Rebates found"
+      },
+      "created": "A new Rebate is created with identifier {{ param }}",
+      "updated": "A Rebate is updated with identifier {{ param }}",
+      "deleted": "A Rebate is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Rebate {{ id }}?"
+      },
+      "detail": {
+        "title": "Rebate"
+      },
+      "id": "Id",
+      "rebateDate": "Rebate Date",
+      "amount": "Amount",
+      "currency": "Currency",
+      "account": "Account",
+      "operation": "Operation"
+    }
+  }
+}

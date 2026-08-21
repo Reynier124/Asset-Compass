@@ -1,0 +1,9 @@
+{
+  "gatewayApp": {
+    "OperationType": {
+      "null": "",
+      "BUY": "BUY",
+      "SELL": "SELL"
+    }
+  }
+}

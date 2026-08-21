@@ -1,0 +1,27 @@
+{
+  "gatewayApp": {
+    "valuation": {
+      "home": {
+        "title": "Valuations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Valuation",
+        "createOrEditLabel": "Create or edit a Valuation",
+        "notFound": "No Valuations found"
+      },
+      "created": "A new Valuation is created with identifier {{ param }}",
+      "updated": "A Valuation is updated with identifier {{ param }}",
+      "deleted": "A Valuation is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Valuation {{ id }}?"
+      },
+      "detail": {
+        "title": "Valuation"
+      },
+      "id": "Id",
+      "snapshotDate": "Snapshot Date",
+      "totalValue": "Total Value",
+      "currency": "Currency",
+      "account": "Account"
+    }
+  }
+}

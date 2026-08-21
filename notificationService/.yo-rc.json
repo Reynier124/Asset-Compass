@@ -1,0 +1,26 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 2,
+    "applicationType": "microservice",
+    "authenticationType": "oauth2",
+    "baseName": "notificationService",
+    "buildTool": "maven",
+    "cacheProvider": "redis",
+    "clientFramework": "no",
+    "creationTimestamp": 1702483852913,
+    "devDatabaseType": "postgresql",
+    "entities": [],
+    "jhipsterVersion": "9.2.0",
+    "jwtSecretKey": "YTIzMzhmOTJmYzhjYjI5YmMzZWMxY2EzZjk3ZTU4OTc3NzY5NjM1MTI2ODFlODA4ZDNkZmJhY2YwMmE5NGFkMmQ5NWRhNWEyY2IyNWI4ZWU1MGIxZjQzZDQyNDk1NmNjMzJhZGMxMzU3NzI1ZGZhNWQ1NzNlZDg5MjVjYThiYTE=",
+    "languages": ["en"],
+    "messageBroker": "kafka",
+    "monorepository": true,
+    "nativeLanguage": "en",
+    "packageName": "com.assetcompass.notification",
+    "prodDatabaseType": "postgresql",
+    "serverPort": "8082",
+    "serviceDiscoveryType": "no",
+    "skipClient": true,
+    "skipCommitHook": true
+  }
+}

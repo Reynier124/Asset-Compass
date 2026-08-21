@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: notificationservice
+  namespace: assetcompass
+  labels:
+    app: notificationservice
+spec:
+  selector:
+    app: notificationservice
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8082

@@ -1,0 +1,40 @@
+{
+  "generator-jhipster": {
+    "applicationIndex": 0,
+    "applicationType": "gateway",
+    "authenticationType": "oauth2",
+    "baseName": "gateway",
+    "buildTool": "maven",
+    "cacheProvider": "redis",
+    "clientFramework": "react",
+    "creationTimestamp": 1703288914559,
+    "devDatabaseType": "postgresql",
+    "devServerPort": null,
+    "entities": [
+      "Broker",
+      "BrokerAccount",
+      "Asset",
+      "AssetRatio",
+      "Operation",
+      "Rebate",
+      "TaxEvent",
+      "IncomeEvent",
+      "Position",
+      "Valuation"
+    ],
+    "jhipsterVersion": "9.2.0",
+    "jwtSecretKey": "ZWFhZWNmNTE5OGY5ODQwZGQ4YmFkNzcwZTM3YmI4NDdjOThmNGE5Nzk5YmMxODUyZjk4NDA3NjVhZTI3Y2RiMTkwMTJmYzUzOTUxMzgzNWQ0ZTU0N2M5NGYzNjNkYzRiNGVhNDI4ZDM1NzU5ZTZiZTdiYmU1YTY1ZGY0MGI1NmY=",
+    "languages": ["en"],
+    "lastLiquibaseTimestamp": 1703289514000,
+    "messageBroker": "kafka",
+    "monorepository": true,
+    "nativeLanguage": "en",
+    "packageName": "com.assetcompass.gateway",
+    "prodDatabaseType": "postgresql",
+    "reactive": true,
+    "serverPort": "8080",
+    "serviceDiscoveryType": "no",
+    "skipCommitHook": true,
+    "testFrameworks": ["cypress"]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gatewayApp": {
+    "assetRatio": {
+      "home": {
+        "title": "Asset Ratios",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Asset Ratio",
+        "createOrEditLabel": "Create or edit a Asset Ratio",
+        "notFound": "No Asset Ratios found"
+      },
+      "created": "A new Asset Ratio is created with identifier {{ param }}",
+      "updated": "A Asset Ratio is updated with identifier {{ param }}",
+      "deleted": "A Asset Ratio is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Asset Ratio {{ id }}?"
+      },
+      "detail": {
+        "title": "Asset Ratio"
+      },
+      "id": "Id",
+      "ratio": "Ratio",
+      "effectiveFrom": "Effective From",
+      "asset": "Asset"
+    }
+  }
+}
