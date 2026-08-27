@@ -63,7 +63,7 @@ public class RebateResource {
     @PostMapping("")
     public ResponseEntity<RebateDTO> createRebate(@Valid @RequestBody RebateDTO rebateDTO) throws URISyntaxException {
         LOG.debug("REST request to save Rebate : {}", rebateDTO);
-        if (rebateDTO.getId() != null) {
+        if (rebateRepository.existsById(rebateDTO.getId())) {
             throw new BadRequestAlertException("A new rebate cannot already have an ID", ENTITY_NAME, "idexists");
         }
         rebateDTO = rebateService.save(rebateDTO);

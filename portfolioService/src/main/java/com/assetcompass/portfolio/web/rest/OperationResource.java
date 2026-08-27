@@ -67,7 +67,7 @@ public class OperationResource {
     @PostMapping("")
     public ResponseEntity<OperationDTO> createOperation(@Valid @RequestBody OperationDTO operationDTO) throws URISyntaxException {
         LOG.debug("REST request to save Operation : {}", operationDTO);
-        if (operationDTO.getId() != null) {
+        if (operationRepository.existsById(operationDTO.getId())) {
             throw new BadRequestAlertException("A new operation cannot already have an ID", ENTITY_NAME, "idexists");
         }
         operationDTO = operationService.save(operationDTO);

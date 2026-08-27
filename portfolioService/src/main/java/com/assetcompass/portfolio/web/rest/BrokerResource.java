@@ -58,7 +58,7 @@ public class BrokerResource {
     @PostMapping("")
     public ResponseEntity<BrokerDTO> createBroker(@Valid @RequestBody BrokerDTO brokerDTO) throws URISyntaxException {
         LOG.debug("REST request to save Broker : {}", brokerDTO);
-        if (brokerDTO.getId() != null) {
+        if (brokerRepository.existsById(brokerDTO.getId())) {
             throw new BadRequestAlertException("A new broker cannot already have an ID", ENTITY_NAME, "idexists");
         }
         brokerDTO = brokerService.save(brokerDTO);

@@ -62,7 +62,7 @@ public class AssetRatioResource {
     @PostMapping("")
     public ResponseEntity<AssetRatioDTO> createAssetRatio(@Valid @RequestBody AssetRatioDTO assetRatioDTO) throws URISyntaxException {
         LOG.debug("REST request to save AssetRatio : {}", assetRatioDTO);
-        if (assetRatioDTO.getId() != null) {
+        if (assetRatioRepository.existsById(assetRatioDTO.getId())) {
             throw new BadRequestAlertException("A new assetRatio cannot already have an ID", ENTITY_NAME, "idexists");
         }
         assetRatioDTO = assetRatioService.save(assetRatioDTO);

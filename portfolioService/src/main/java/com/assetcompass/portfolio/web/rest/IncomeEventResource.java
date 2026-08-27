@@ -67,7 +67,7 @@ public class IncomeEventResource {
     @PostMapping("")
     public ResponseEntity<IncomeEventDTO> createIncomeEvent(@Valid @RequestBody IncomeEventDTO incomeEventDTO) throws URISyntaxException {
         LOG.debug("REST request to save IncomeEvent : {}", incomeEventDTO);
-        if (incomeEventDTO.getId() != null) {
+        if (incomeEventRepository.existsById(incomeEventDTO.getId())) {
             throw new BadRequestAlertException("A new incomeEvent cannot already have an ID", ENTITY_NAME, "idexists");
         }
         incomeEventDTO = incomeEventService.save(incomeEventDTO);
