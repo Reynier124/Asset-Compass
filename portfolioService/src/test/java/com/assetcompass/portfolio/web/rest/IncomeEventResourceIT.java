@@ -84,6 +84,7 @@ class IncomeEventResourceIT {
      */
     public static IncomeEvent createEntity(EntityManager em) {
         IncomeEvent incomeEvent = new IncomeEvent()
+            .id(UUID.randomUUID())
             .type(DEFAULT_TYPE)
             .eventDate(DEFAULT_EVENT_DATE)
             .amount(DEFAULT_AMOUNT)
