@@ -81,6 +81,7 @@ A unified, accurate, read-only view of all investments across Binance, IOL, and 
 | UUID primary keys (not DB-generated) for all entities | ID type/strategy must match exactly between gateway and owning service in a microservices setup | ✓ Good |
 | `Operation` as immutable source of truth; `Position`/`Valuation` as materialized views, never primary data | Prevents drift between raw events and computed/derived state | — Pending |
 | GSD commits locally under the user's own git identity, never pushes | User wants atomic local commits from the workflow while retaining full manual control over remote history | — Pending |
+| Switch from Liquibase to Flyway for schema migrations | Original plan assumed Flyway, but JHipster scaffolded Liquibase by default; user chose to switch rather than keep the scaffold default | — Pending |
 
 ## Evolution
 
