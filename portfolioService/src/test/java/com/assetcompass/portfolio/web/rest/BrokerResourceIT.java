@@ -66,7 +66,7 @@ class BrokerResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Broker createEntity() {
-        return new Broker().id(UUID.randomUUID()).name(DEFAULT_NAME);
+        return new Broker().name(DEFAULT_NAME);
     }
 
     /**
@@ -98,6 +98,7 @@ class BrokerResourceIT {
         long databaseSizeBeforeCreate = getRepositoryCount();
         // Create the Broker
         BrokerDTO brokerDTO = brokerMapper.toDto(broker);
+        brokerDTO.setId(UUID.randomUUID());
         var returnedBrokerDTO = om.readValue(
             restBrokerMockMvc
                 .perform(post(ENTITY_API_URL).with(csrf()).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(brokerDTO)))

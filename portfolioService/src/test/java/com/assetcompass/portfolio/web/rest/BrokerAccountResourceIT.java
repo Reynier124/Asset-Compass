@@ -70,10 +70,7 @@ class BrokerAccountResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static BrokerAccount createEntity(EntityManager em) {
-        BrokerAccount brokerAccount = new BrokerAccount()
-            .id(UUID.randomUUID())
-            .externalAccountId(DEFAULT_EXTERNAL_ACCOUNT_ID)
-            .displayName(DEFAULT_DISPLAY_NAME);
+        BrokerAccount brokerAccount = new BrokerAccount().externalAccountId(DEFAULT_EXTERNAL_ACCOUNT_ID).displayName(DEFAULT_DISPLAY_NAME);
         // Add required entity
         Broker broker;
         if (TestUtil.findAll(em, Broker.class).isEmpty()) {
@@ -129,6 +126,7 @@ class BrokerAccountResourceIT {
         long databaseSizeBeforeCreate = getRepositoryCount();
         // Create the BrokerAccount
         BrokerAccountDTO brokerAccountDTO = brokerAccountMapper.toDto(brokerAccount);
+        brokerAccountDTO.setId(UUID.randomUUID());
         var returnedBrokerAccountDTO = om.readValue(
             restBrokerAccountMockMvc
                 .perform(

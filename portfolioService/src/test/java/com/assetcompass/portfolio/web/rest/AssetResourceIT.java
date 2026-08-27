@@ -75,12 +75,7 @@ class AssetResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Asset createEntity() {
-        return new Asset()
-            .id(UUID.randomUUID())
-            .ticket(DEFAULT_TICKET)
-            .category(DEFAULT_CATEGORY)
-            .country(DEFAULT_COUNTRY)
-            .description(DEFAULT_DESCRIPTION);
+        return new Asset().ticket(DEFAULT_TICKET).category(DEFAULT_CATEGORY).country(DEFAULT_COUNTRY).description(DEFAULT_DESCRIPTION);
     }
 
     /**
@@ -112,6 +107,7 @@ class AssetResourceIT {
         long databaseSizeBeforeCreate = getRepositoryCount();
         // Create the Asset
         AssetDTO assetDTO = assetMapper.toDto(asset);
+        assetDTO.setId(UUID.randomUUID());
         var returnedAssetDTO = om.readValue(
             restAssetMockMvc
                 .perform(post(ENTITY_API_URL).with(csrf()).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(assetDTO)))
