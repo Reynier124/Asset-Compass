@@ -26,7 +26,6 @@ public class IncomeEvent implements Serializable {
 
     @NotNull
     @Id
-    @GeneratedValue
     @Column(name = "id", nullable = false)
     private UUID id;
 
