@@ -58,7 +58,7 @@ public class AssetResource {
     @PostMapping("")
     public ResponseEntity<AssetDTO> createAsset(@Valid @RequestBody AssetDTO assetDTO) throws URISyntaxException {
         LOG.debug("REST request to save Asset : {}", assetDTO);
-        if (assetDTO.getId() != null) {
+        if (assetRepository.existsById(assetDTO.getId())) {
             throw new BadRequestAlertException("A new asset cannot already have an ID", ENTITY_NAME, "idexists");
         }
         assetDTO = assetService.save(assetDTO);

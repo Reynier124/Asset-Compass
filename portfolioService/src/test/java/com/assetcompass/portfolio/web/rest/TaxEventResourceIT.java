@@ -84,7 +84,12 @@ class TaxEventResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static TaxEvent createEntity(EntityManager em) {
-        TaxEvent taxEvent = new TaxEvent().type(DEFAULT_TYPE).taxDate(DEFAULT_TAX_DATE).amount(DEFAULT_AMOUNT).currency(DEFAULT_CURRENCY);
+        TaxEvent taxEvent = new TaxEvent()
+            .id(UUID.randomUUID())
+            .type(DEFAULT_TYPE)
+            .taxDate(DEFAULT_TAX_DATE)
+            .amount(DEFAULT_AMOUNT)
+            .currency(DEFAULT_CURRENCY);
         // Add required entity
         BrokerAccount brokerAccount;
         if (TestUtil.findAll(em, BrokerAccount.class).isEmpty()) {

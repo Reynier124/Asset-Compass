@@ -66,7 +66,7 @@ class BrokerResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Broker createEntity() {
-        return new Broker().name(DEFAULT_NAME);
+        return new Broker().id(UUID.randomUUID()).name(DEFAULT_NAME);
     }
 
     /**

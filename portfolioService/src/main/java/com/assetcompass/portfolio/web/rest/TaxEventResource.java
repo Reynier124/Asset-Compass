@@ -67,7 +67,7 @@ public class TaxEventResource {
     @PostMapping("")
     public ResponseEntity<TaxEventDTO> createTaxEvent(@Valid @RequestBody TaxEventDTO taxEventDTO) throws URISyntaxException {
         LOG.debug("REST request to save TaxEvent : {}", taxEventDTO);
-        if (taxEventDTO.getId() != null) {
+        if (taxEventRepository.existsById(taxEventDTO.getId())) {
             throw new BadRequestAlertException("A new taxEvent cannot already have an ID", ENTITY_NAME, "idexists");
         }
         taxEventDTO = taxEventService.save(taxEventDTO);

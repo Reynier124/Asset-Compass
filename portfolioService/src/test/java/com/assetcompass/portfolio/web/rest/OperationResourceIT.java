@@ -101,6 +101,7 @@ class OperationResourceIT {
      */
     public static Operation createEntity(EntityManager em) {
         Operation operation = new Operation()
+            .id(UUID.randomUUID())
             .type(DEFAULT_TYPE)
             .operationDate(DEFAULT_OPERATION_DATE)
             .quantity(DEFAULT_QUANTITY)

@@ -63,7 +63,7 @@ public class BrokerAccountResource {
     public ResponseEntity<BrokerAccountDTO> createBrokerAccount(@Valid @RequestBody BrokerAccountDTO brokerAccountDTO)
         throws URISyntaxException {
         LOG.debug("REST request to save BrokerAccount : {}", brokerAccountDTO);
-        if (brokerAccountDTO.getId() != null) {
+        if (brokerAccountRepository.existsById(brokerAccountDTO.getId())) {
             throw new BadRequestAlertException("A new brokerAccount cannot already have an ID", ENTITY_NAME, "idexists");
         }
         brokerAccountDTO = brokerAccountService.save(brokerAccountDTO);

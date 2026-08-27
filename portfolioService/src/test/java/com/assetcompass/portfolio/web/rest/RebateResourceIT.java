@@ -79,7 +79,11 @@ class RebateResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Rebate createEntity(EntityManager em) {
-        Rebate rebate = new Rebate().rebateDate(DEFAULT_REBATE_DATE).amount(DEFAULT_AMOUNT).currency(DEFAULT_CURRENCY);
+        Rebate rebate = new Rebate()
+            .id(UUID.randomUUID())
+            .rebateDate(DEFAULT_REBATE_DATE)
+            .amount(DEFAULT_AMOUNT)
+            .currency(DEFAULT_CURRENCY);
         // Add required entity
         BrokerAccount brokerAccount;
         if (TestUtil.findAll(em, BrokerAccount.class).isEmpty()) {

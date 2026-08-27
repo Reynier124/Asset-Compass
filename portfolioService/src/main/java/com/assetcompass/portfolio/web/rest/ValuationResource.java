@@ -67,7 +67,7 @@ public class ValuationResource {
     @PostMapping("")
     public ResponseEntity<ValuationDTO> createValuation(@Valid @RequestBody ValuationDTO valuationDTO) throws URISyntaxException {
         LOG.debug("REST request to save Valuation : {}", valuationDTO);
-        if (valuationDTO.getId() != null) {
+        if (valuationRepository.existsById(valuationDTO.getId())) {
             throw new BadRequestAlertException("A new valuation cannot already have an ID", ENTITY_NAME, "idexists");
         }
         valuationDTO = valuationService.save(valuationDTO);

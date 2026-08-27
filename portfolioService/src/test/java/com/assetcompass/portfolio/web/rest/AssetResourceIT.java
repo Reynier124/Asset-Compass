@@ -75,7 +75,12 @@ class AssetResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Asset createEntity() {
-        return new Asset().ticket(DEFAULT_TICKET).category(DEFAULT_CATEGORY).country(DEFAULT_COUNTRY).description(DEFAULT_DESCRIPTION);
+        return new Asset()
+            .id(UUID.randomUUID())
+            .ticket(DEFAULT_TICKET)
+            .category(DEFAULT_CATEGORY)
+            .country(DEFAULT_COUNTRY)
+            .description(DEFAULT_DESCRIPTION);
     }
 
     /**

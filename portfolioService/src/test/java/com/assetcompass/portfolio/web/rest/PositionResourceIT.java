@@ -87,6 +87,7 @@ class PositionResourceIT {
      */
     public static Position createEntity(EntityManager em) {
         Position position = new Position()
+            .id(UUID.randomUUID())
             .quantity(DEFAULT_QUANTITY)
             .averageCost(DEFAULT_AVERAGE_COST)
             .currentValue(DEFAULT_CURRENT_VALUE)

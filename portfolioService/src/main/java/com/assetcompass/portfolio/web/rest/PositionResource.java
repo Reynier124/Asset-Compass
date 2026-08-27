@@ -67,7 +67,7 @@ public class PositionResource {
     @PostMapping("")
     public ResponseEntity<PositionDTO> createPosition(@Valid @RequestBody PositionDTO positionDTO) throws URISyntaxException {
         LOG.debug("REST request to save Position : {}", positionDTO);
-        if (positionDTO.getId() != null) {
+        if (positionRepository.existsById(positionDTO.getId())) {
             throw new BadRequestAlertException("A new position cannot already have an ID", ENTITY_NAME, "idexists");
         }
         positionDTO = positionService.save(positionDTO);
