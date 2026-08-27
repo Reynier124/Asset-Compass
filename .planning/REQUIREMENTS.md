@@ -78,31 +78,31 @@ Which phases cover which requirements. Populated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SCAF-01 | TBD | Pending |
-| SCAF-02 | TBD | Pending |
-| SCAF-03 | TBD | Pending |
-| SCAF-04 | TBD | Pending |
-| SCAF-05 | TBD | Pending |
-| SCAF-06 | TBD | Pending |
-| FOUND-01 | TBD | Pending |
-| FOUND-02 | TBD | Pending |
-| FOUND-03 | TBD | Pending |
-| FOUND-04 | TBD | Pending |
-| CONN-01 | TBD | Pending |
-| CONN-02 | TBD | Pending |
-| CONN-03 | TBD | Pending |
-| CONN-04 | TBD | Pending |
-| DASH-01 | TBD | Pending |
-| DASH-02 | TBD | Pending |
-| DASH-03 | TBD | Pending |
-| DASH-04 | TBD | Pending |
-| DASH-05 | TBD | Pending |
+| SCAF-01 | Phase 1 | Pending |
+| SCAF-02 | Phase 1 | Pending |
+| SCAF-03 | Phase 1 | Pending |
+| SCAF-04 | Phase 1 | Pending |
+| SCAF-05 | Phase 1 | Pending |
+| SCAF-06 | Phase 1 | Pending |
+| FOUND-01 | Phase 2 | Pending |
+| FOUND-02 | Phase 2 | Pending |
+| FOUND-03 | Phase 2 | Pending |
+| FOUND-04 | Phase 2 | Pending |
+| CONN-04 | Phase 2 | Pending |
+| CONN-01 | Phase 3 | Pending |
+| CONN-02 | Phase 4 | Pending |
+| CONN-03 | Phase 5 | Pending |
+| DASH-01 | Phase 6 | Pending |
+| DASH-02 | Phase 6 | Pending |
+| DASH-03 | Phase 6 | Pending |
+| DASH-04 | Phase 6 | Pending |
+| DASH-05 | Phase 6 | Pending |
 
 **Coverage:**
 - v1 requirements: 19 total
-- Mapped to phases: 0
-- Unmapped: 19 ⚠️ (roadmap creation pending)
+- Mapped to phases: 19
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-08-26*
-*Last updated: 2026-08-26 after initial definition*
+*Last updated: 2026-08-26 after roadmap creation (6 phases, full v1 coverage)*
