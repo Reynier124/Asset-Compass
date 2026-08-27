@@ -79,7 +79,11 @@ class RebateResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Rebate createEntity(EntityManager em) {
-        Rebate rebate = new Rebate().rebateDate(DEFAULT_REBATE_DATE).amount(DEFAULT_AMOUNT).currency(DEFAULT_CURRENCY);
+        Rebate rebate = new Rebate()
+            .id(UUID.randomUUID())
+            .rebateDate(DEFAULT_REBATE_DATE)
+            .amount(DEFAULT_AMOUNT)
+            .currency(DEFAULT_CURRENCY);
         // Add required entity
         BrokerAccount brokerAccount;
         if (TestUtil.findAll(em, BrokerAccount.class).isEmpty()) {
@@ -133,7 +137,6 @@ class RebateResourceIT {
         long databaseSizeBeforeCreate = getRepositoryCount();
         // Create the Rebate
         RebateDTO rebateDTO = rebateMapper.toDto(rebate);
-        rebateDTO.setId(UUID.randomUUID());
         var returnedRebateDTO = om.readValue(
             restRebateMockMvc
                 .perform(post(ENTITY_API_URL).with(csrf()).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(rebateDTO)))

@@ -72,7 +72,10 @@ class AssetRatioResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static AssetRatio createEntity(EntityManager em) {
-        AssetRatio assetRatio = new AssetRatio().ratio(DEFAULT_RATIO).effectiveFrom(DEFAULT_EFFECTIVE_FROM);
+        AssetRatio assetRatio = new AssetRatio()
+            .id(UUID.randomUUID())
+            .ratio(DEFAULT_RATIO)
+            .effectiveFrom(DEFAULT_EFFECTIVE_FROM);
         // Add required entity
         Asset asset;
         if (TestUtil.findAll(em, Asset.class).isEmpty()) {
@@ -126,7 +129,6 @@ class AssetRatioResourceIT {
         long databaseSizeBeforeCreate = getRepositoryCount();
         // Create the AssetRatio
         AssetRatioDTO assetRatioDTO = assetRatioMapper.toDto(assetRatio);
-        assetRatioDTO.setId(UUID.randomUUID());
         var returnedAssetRatioDTO = om.readValue(
             restAssetRatioMockMvc
                 .perform(

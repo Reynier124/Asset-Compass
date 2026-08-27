@@ -78,7 +78,11 @@ class ValuationResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Valuation createEntity() {
-        return new Valuation().snapshotDate(DEFAULT_SNAPSHOT_DATE).totalValue(DEFAULT_TOTAL_VALUE).currency(DEFAULT_CURRENCY);
+        return new Valuation()
+            .id(UUID.randomUUID())
+            .snapshotDate(DEFAULT_SNAPSHOT_DATE)
+            .totalValue(DEFAULT_TOTAL_VALUE)
+            .currency(DEFAULT_CURRENCY);
     }
 
     /**
@@ -110,7 +114,6 @@ class ValuationResourceIT {
         long databaseSizeBeforeCreate = getRepositoryCount();
         // Create the Valuation
         ValuationDTO valuationDTO = valuationMapper.toDto(valuation);
-        valuationDTO.setId(UUID.randomUUID());
         var returnedValuationDTO = om.readValue(
             restValuationMockMvc
                 .perform(

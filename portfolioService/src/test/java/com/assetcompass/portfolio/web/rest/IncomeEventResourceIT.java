@@ -84,6 +84,7 @@ class IncomeEventResourceIT {
      */
     public static IncomeEvent createEntity(EntityManager em) {
         IncomeEvent incomeEvent = new IncomeEvent()
+            .id(UUID.randomUUID())
             .type(DEFAULT_TYPE)
             .eventDate(DEFAULT_EVENT_DATE)
             .amount(DEFAULT_AMOUNT)
@@ -165,7 +166,6 @@ class IncomeEventResourceIT {
         long databaseSizeBeforeCreate = getRepositoryCount();
         // Create the IncomeEvent
         IncomeEventDTO incomeEventDTO = incomeEventMapper.toDto(incomeEvent);
-        incomeEventDTO.setId(UUID.randomUUID());
         var returnedIncomeEventDTO = om.readValue(
             restIncomeEventMockMvc
                 .perform(
