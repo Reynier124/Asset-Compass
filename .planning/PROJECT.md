@@ -82,6 +82,7 @@ A unified, accurate, read-only view of all investments across Binance, IOL, and 
 | `Operation` as immutable source of truth; `Position`/`Valuation` as materialized views, never primary data | Prevents drift between raw events and computed/derived state | — Pending |
 | GSD commits locally under the user's own git identity, never pushes | User wants atomic local commits from the workflow while retaining full manual control over remote history | — Pending |
 | Switch from Liquibase to Flyway for schema migrations | Original plan assumed Flyway, but JHipster scaffolded Liquibase by default; user chose to switch rather than keep the scaffold default | — Pending |
+| Removed `@GeneratedValue` from all 10 portfolioService domain entities | UUIDs are manually assigned, not DB-generated — `@GeneratedValue` contradicted that and actively broke the 10 `create*ResourceIT` tests (Hibernate routed client-supplied ids through `merge()` instead of `persist()`); verified schema-safe against the Liquibase changelogs (no DB-side default/generator on any `id` column) | ✓ Good |
 
 ## Evolution
 

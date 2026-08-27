@@ -23,7 +23,7 @@ See: .planning/PROJECT.md (updated 2026-08-26)
 Phase: 1 of 6 (Scaffolding & CI Foundation)
 Plan: 0 of TBD in current phase
 Status: Ready to plan
-Last activity: 2026-08-26 — ROADMAP.md and STATE.md created; 19/19 v1 requirements mapped across 6 phases
+Last activity: 2026-08-26 - Completed quick task 260826-v62: Fix the 10 failing createXxxResourceIT integration tests in portfolioService using Option A (client-supplies-ID)
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -66,10 +66,17 @@ None yet.
 ### Blockers/Concerns
 
 - **Open question carried from PROJECT.md**: whether Keycloak (and possibly Kafka) needs to be in Docker Compose / local dev now, given portfolioService is scaffolded with `authenticationType oauth2` and `messageBroker kafka` even though it's the only active service. Ask before deciding — relevant to Phase 1 (SCAF-02).
-- **Known defect, unresolved**: 10 failing integration tests in portfolioService (`createXxxResourceIT` across most entities) — JHipster-generated tests POST a DTO without an `id` expecting a DB-generated one, but entities use manually-assigned UUIDs with `@NotNull` on `id`. Confirm root cause and fix trade-offs before relying on a clean `mvn verify`; relevant before/during Phase 1.
+- **Resolved** (quick task 260826-v62): The 10 failing `createXxxResourceIT` tests are fixed. Root cause confirmed and root-caused fully: `@Id @GeneratedValue` on all 10 domain entities conflicted with the manually-assigned-UUID architecture decision. Fix: removed `@GeneratedValue` from all 10 entities, added client-supplied UUIDs to test fixtures, replaced the controllers' `getId() != null` create-guard with `repository.existsById(...)`. `mvn verify` now green (432/432, 0 failures/errors). See `.planning/quick/260826-v62-fix-the-10-failing-createxxxresourceit-i/`.
+- **Unresolved, pre-existing**: A large, pre-session set of uncommitted formatting-only changes across ~140 `portfolioService/` files (line-wrap/reflow differences, e.g. `toString()` methods) is stashed at `stash@{0}` ("pre-session portfolioService formatting drift"). Needs manual reconciliation — it now conflicts with the quick-task fix in 8 files. Not touched further; the user should decide whether to pop/resolve it or drop it.
 - **Research flag**: Nexo account type (retail vs. Nexo Pro) is unresolved — determines whether Phase 5 is a REST connector at all or needs a scraper/manual-import fallback. Must be resolved during Phase 5 discussion, not assumed.
 - **Research flag**: IOL's full API spec is gated behind an activated brokerage account; endpoint shapes are inferred from community wrappers, not primary docs. Budget manual-exploration time early in Phase 4 before finalizing WireMock fixtures.
 - **Research flag**: Exact FX rate source for currency normalization (provider/API, refresh cadence, historical rate availability for backfill) is not yet decided — needs a concrete decision during Phase 2 planning.
+
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 260826-v62 | Fix the 10 failing createXxxResourceIT integration tests in portfolioService using Option A (client-supplies-ID) | 2026-08-26 | 40ff0e7 | [260826-v62-fix-the-10-failing-createxxxresourceit-i](./quick/260826-v62-fix-the-10-failing-createxxxresourceit-i/) |
 
 ## Deferred Items
 
